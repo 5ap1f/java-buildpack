@@ -6,6 +6,12 @@
 # Do not add anything above this next line.
 common: &default_settings
 
+  # Disable circuit breaker
+  circuitbreaker:
+     enabled: false
+     memory_threshold: 1
+     gc_cpu_threshold: 1
+
   # ============================== LICENSE KEY ===============================
   # You must specify the license key associated with your New Relic
   # account. For example, if your license key is 12345 use this:
@@ -208,7 +214,7 @@ common: &default_settings
     # Events are collected up to the configured amount. Afterwards, events are sampled to
     # maintain an even distribution across the harvest cycle.
     # Default is 2000.  Setting to 0 will disable.
-    max_samples_stored: 2000
+    max_samples_stored: 1000000
 
   # Cross Application Tracing adds request and response headers to
   # external calls using supported HTTP libraries to provide better
